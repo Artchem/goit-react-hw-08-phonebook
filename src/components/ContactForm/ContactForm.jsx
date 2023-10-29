@@ -9,7 +9,8 @@ import {
   LabelStyled,
 } from './ContactForm.styled';
 import { toast } from 'react-toastify';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
+// import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
   const dispatch = useDispatch();

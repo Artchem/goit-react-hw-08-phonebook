@@ -1,24 +1,15 @@
-import { Container, Text } from './App.styled';
-import ContactForm from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Container } from './App.styled';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+// import { fetchContacts } from 'redux/operations';
 import { useDispatch } from 'react-redux';
-import {
-  selectContactsItems,
-  selectError,
-  selectIsLoading,
-} from 'redux/selectors';
+import { Route, Routes } from 'react-router-dom';
+import Home from 'pages/Home/Home';
+import Layout from './Layout/Layout';
+import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export default function App() {
-  const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
-  const items = useSelector(selectContactsItems);
-  // const contactsAll = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,15 +18,15 @@ export default function App() {
 
   return (
     <Container>
-      <ContactForm />
-      <h2>Contacts</h2>
-
-      <Text>Total contacts: {items.length}</Text>
-
-      <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
-      <ContactList />
-      <ToastContainer autoClose={3000} position="top-right" />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contacts" element={<div></div>} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
     </Container>
   );
 }

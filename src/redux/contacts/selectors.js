@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 export const getFilterValue = state => state.filter.value;
-console.log('getFilterValue :>> ', getFilterValue);
+// console.log('getFilterValue :>> ', getFilterValue);
 
 export const selectContactsItems = state => state.contacts.items;
 export const selectIsLoading = state => state.contacts.isLoading;

@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux';
 import { Btn, Item } from './ContactList.styled';
 import { useDispatch } from 'react-redux';
-import { delContact } from 'redux/operations';
 import {
   getFiltredContacts,
   selectContactsItems,
   selectError,
   selectIsLoading,
-} from 'redux/selectors';
+} from 'redux/contacts/selectors';
+import { delContact } from 'redux/contacts/operations';
 
-export function ContactList() {
+function ContactList() {
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const items = useSelector(selectContactsItems);
@@ -35,3 +35,5 @@ export function ContactList() {
     </>
   );
 }
+
+export default ContactList;

@@ -1,9 +1,9 @@
 import { Input, Label } from './Filter.styled';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
+import { setFilter } from 'redux/contacts/filterSlice';
 
-export function Filter() {
+function Filter() {
   const dispatch = useDispatch();
   const filterValue = useSelector(state => state.filter.value);
   return (
@@ -18,3 +18,5 @@ export function Filter() {
     </Label>
   );
 }
+
+export default Filter;
