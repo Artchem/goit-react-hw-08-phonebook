@@ -7,13 +7,14 @@ import Home from 'pages/Home/Home';
 import Layout from './Layout/Layout';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
-import { fetchContacts } from 'redux/contacts/operations';
+// import { fetchContacts } from 'redux/contacts/operations';
+import { refreshAuth } from 'redux/auth/authOperations';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshAuth());
   }, [dispatch]);
 
   return (

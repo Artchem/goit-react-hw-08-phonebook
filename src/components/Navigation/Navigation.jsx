@@ -5,8 +5,7 @@ function Navigation() {
     <>
       <StyledNav>
         <StyledNavLink to="/">Home</StyledNavLink>
-        <StyledNavLink to="/register">Register</StyledNavLink>
-        <StyledNavLink to="/login">Log In</StyledNavLink>
+
         <StyledNavLink to="/contacts">Contacts</StyledNavLink>
       </StyledNav>
     </>

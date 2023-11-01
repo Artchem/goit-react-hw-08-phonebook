@@ -17,6 +17,7 @@ import { Container, Text } from './Home.styled';
 export default function Home() {
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
+  // console.log('isLoading :>> ', isLoading);
   const items = useSelector(selectContactsItems);
   const dispatch = useDispatch();
 
