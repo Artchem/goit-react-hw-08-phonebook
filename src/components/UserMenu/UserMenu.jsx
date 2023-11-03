@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { selectUserName } from 'redux/auth/authSelectors';
+import { Container, StyledBtn, Text } from './UserMenu.styled';
 
 function UserMenu() {
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <p>Welcome, {userName}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
+    <Container>
+      <Text>Welcome, {userName}</Text>
+      <StyledBtn type="button" onClick={() => dispatch(logOut())}>
         Logout
-      </button>
-    </div>
+      </StyledBtn>
+    </Container>
   );
 }
 

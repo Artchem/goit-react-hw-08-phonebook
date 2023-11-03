@@ -22,7 +22,7 @@ export default function ContactForm() {
     const data = {
       // id: nanoid(5),
       name: evt.target.name.value,
-      phone: evt.target.phone.value,
+      number: evt.target.number.value,
     };
     // console.log('data :>> ', data);
     if (selectContactItem.some(contact => contact.name === data.name)) {
@@ -52,7 +52,7 @@ export default function ContactForm() {
         Number
         <InputStyled
           type="tel"
-          name="phone"
+          name="number"
           // value={number}
           // onChange={handleChange}
           // pattern="\\+?\\d{1,4}?[ .\\-\\s]?\\(?\\d{1,3}?\\)?[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,4}[ .\\-\\s]?\\d{1,9}"

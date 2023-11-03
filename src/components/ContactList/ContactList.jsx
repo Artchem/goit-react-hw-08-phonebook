@@ -26,7 +26,7 @@ function ContactList() {
       {items.length > 0 &&
         filteredContacts.map(contact => (
           <Item key={contact.id}>
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
             <Btn onClick={() => dispatch(delContact(contact.id))} type="button">
               Delete
             </Btn>

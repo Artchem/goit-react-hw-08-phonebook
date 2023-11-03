@@ -60,16 +60,26 @@ export const refreshAuth = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    console.log('state :>> ', state);
-    if (!persistedToken) return;
+    // console.log('state :>> ', state);
+    // if (persistedToken === null) {
+    //   return thunkAPI.rejectWithValue();
+    // }
     setToken(persistedToken);
     try {
-      // setToken(persistedToken);
       const response = await phonebookInstance.get('/users/current');
 
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
+
+      if (!persistedToken) return false;
+      return true;
+    },
   }
 );

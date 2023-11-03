@@ -1,9 +1,5 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { phonebookInstance } from 'redux/auth/authOperations';
-
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/getFetch',
@@ -19,10 +15,13 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, phone }, thunkAPI) => {
-    console.log('phone :>> ', phone);
+  async ({ name, number }, thunkAPI) => {
+    console.log('phone :>> ', number);
     try {
-      const response = await axios.post('/contacts', { name, phone });
+      const response = await phonebookInstance.post('/contacts', {
+        name,
+        number,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -34,7 +33,7 @@ export const delContact = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
+      const response = await phonebookInstance.delete(`/contacts/${contactId}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
