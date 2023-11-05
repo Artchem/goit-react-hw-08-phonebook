@@ -1,8 +1,8 @@
 import { Loader } from 'components/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { register } from 'redux/auth/authOperations';
-import { selectAuthError, selectAuthLoading } from 'redux/auth/authSelectors';
+import { selectAuthLoading } from 'redux/auth/authSelectors';
 import {
   ButtonStyled,
   FormStyled,
@@ -12,17 +12,14 @@ import {
 
 function Register() {
   const dispatch = useDispatch();
-  const error = useSelector(selectAuthError);
+  // const error = useSelector(selectAuthError);
   const isLoading = useSelector(selectAuthLoading);
-  console.log('error :>> ', error);
+  // console.log('error :>> ', error);
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    if (error) {
-      toast.error(`${error} `);
-      return;
-    }
+
     dispatch(
       register({
         name: form.elements.name.value,
@@ -30,6 +27,7 @@ function Register() {
         password: form.elements.password.value,
       })
     );
+
     form.reset();
   };
 

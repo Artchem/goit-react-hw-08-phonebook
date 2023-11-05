@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export const phonebookInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com',
@@ -18,10 +19,13 @@ export const register = createAsyncThunk(
         '/users/signup',
         credentials
       );
-      // console.log('response.data :>> ', response.data);
+
       setToken(response.data.token);
       return response.data;
     } catch (error) {
+      if (error) {
+        toast.error(`${error.response.data.message} `);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -40,6 +44,10 @@ export const authLogIn = createAsyncThunk(
       console.log('response.data.token :>> ', response.data.token);
       return response.data;
     } catch (error) {
+      // console.log('error :>> ', error);
+      if (error) {
+        toast.error(`${error.message} `);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
