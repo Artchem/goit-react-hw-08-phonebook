@@ -6,7 +6,7 @@ export const StyledHeader = styled.header`
   position: sticky;
   z-index: 1100;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   min-height: 52px;
   padding-right: 50px;

@@ -1,11 +1,11 @@
-import { StyledNavLink } from './AuthNav.styled';
+import { StyledNav, StyledNavLink } from './AuthNav.styled';
 
 function AuthNav() {
   return (
-    <>
+    <StyledNav>
       <StyledNavLink to="/register">Register</StyledNavLink>
       <StyledNavLink to="/login">Log In</StyledNavLink>
-    </>
+    </StyledNav>
   );
 }
 

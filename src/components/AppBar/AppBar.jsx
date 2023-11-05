@@ -7,7 +7,7 @@ import { StyledHeader } from './AppBar.styled';
 
 function AppBar() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  console.log('isLoggedIn :>> ', isLoggedIn);
+  // console.log('isLoggedIn :>> ', isLoggedIn);
   return (
     <StyledHeader>
       <Navigation />

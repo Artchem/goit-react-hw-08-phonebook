@@ -8,7 +8,7 @@ import {
 export default function PrivateRoute({ children, redirectTo = '/login' }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const IsRefreshingUser = useSelector(selectIsRefreshingUser);
-  return isLoggedIn && IsRefreshingUser ? (
+  return isLoggedIn && !IsRefreshingUser ? (
     children
   ) : (
     <Navigate to={redirectTo} replace />

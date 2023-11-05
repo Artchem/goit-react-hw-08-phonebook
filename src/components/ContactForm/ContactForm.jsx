@@ -1,16 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-
-// import { nanoid } from 'nanoid';
-
+import { toast } from 'react-toastify';
+import { addContact } from 'redux/contacts/operations';
 import {
   ButtonStyled,
   FormStyled,
   InputStyled,
   LabelStyled,
 } from './ContactForm.styled';
-import { toast } from 'react-toastify';
-import { addContact } from 'redux/contacts/operations';
-// import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -18,9 +14,7 @@ export default function ContactForm() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
     const data = {
-      // id: nanoid(5),
       name: evt.target.name.value,
       number: evt.target.number.value,
     };
@@ -30,7 +24,6 @@ export default function ContactForm() {
       return;
     }
     dispatch(addContact(data));
-
     evt.target.reset();
   };
 

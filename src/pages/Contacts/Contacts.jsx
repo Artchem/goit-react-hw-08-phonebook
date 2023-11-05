@@ -15,7 +15,6 @@ import { Container, Text } from './Contacts.styled';
 export default function Contacts() {
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  // console.log('isLoading :>> ', isLoading);
   const items = useSelector(selectContactsItems);
   const dispatch = useDispatch();
 

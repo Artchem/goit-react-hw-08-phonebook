@@ -1,13 +1,12 @@
-import { Container } from './App.styled';
-import { lazy, useEffect } from 'react';
-// import { fetchContacts } from 'redux/operations';
-import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container } from './App.styled';
 import Layout from './Layout/Layout';
-import { refreshAuth } from 'redux/auth/authOperations';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import { selectIsRefreshingUser } from 'redux/auth/authSelectors';
+import { refreshAuth } from 'redux/auth/authOperations';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Login = lazy(() => import('../pages/Login/Login'));
