@@ -8,6 +8,7 @@ import {
   selectIsLoading,
 } from 'redux/contacts/selectors';
 import { delContact } from 'redux/contacts/operations';
+import { Loader } from 'components/Loader/Loader';
 
 function ContactList() {
   const error = useSelector(selectError);
@@ -20,7 +21,7 @@ function ContactList() {
 
   return (
     <>
-      {isLoading && <p>Loading tasks...</p>}
+      {isLoading && <Loader />}
       {error && <p>{error}</p>}
 
       {items.length > 0 &&

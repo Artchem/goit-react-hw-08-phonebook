@@ -4,10 +4,9 @@ import { styled } from 'styled-components';
 export const StyledNavLink = styled(NavLink)`
   display: block;
   text-align: center;
-  height: 20px;
   width: 100px;
   padding: 5px;
-  margin-right: auto;
+  font-size: 18px;
   color: #3f3f3f;
   text-decoration: none;
   border: 1px solid gray;

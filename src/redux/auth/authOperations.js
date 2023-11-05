@@ -13,7 +13,7 @@ export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      console.log('register credentials:>> ', credentials);
+      // console.log('register credentials:>> ', credentials);
       const response = await phonebookInstance.post(
         '/users/signup',
         credentials

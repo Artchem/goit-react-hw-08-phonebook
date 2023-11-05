@@ -1,5 +1,8 @@
-import { useDispatch } from 'react-redux';
+import { Loader } from 'components/Loader/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { register } from 'redux/auth/authOperations';
+import { selectAuthError, selectAuthLoading } from 'redux/auth/authSelectors';
 import {
   ButtonStyled,
   FormStyled,
@@ -9,10 +12,17 @@ import {
 
 function Register() {
   const dispatch = useDispatch();
+  const error = useSelector(selectAuthError);
+  const isLoading = useSelector(selectAuthLoading);
+  console.log('error :>> ', error);
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    if (error) {
+      toast.error(`${error} `);
+      return;
+    }
     dispatch(
       register({
         name: form.elements.name.value,
@@ -24,21 +34,25 @@ function Register() {
   };
 
   return (
-    <FormStyled onSubmit={handleSubmit} autoComplete="off">
-      <LabelStyled>
-        Username
-        <InputStyled type="text" name="name" />
-      </LabelStyled>
-      <LabelStyled>
-        Email
-        <InputStyled type="email" name="email" />
-      </LabelStyled>
-      <LabelStyled>
-        Password
-        <InputStyled type="password" name="password" />
-      </LabelStyled>
-      <ButtonStyled type="submit">Register</ButtonStyled>
-    </FormStyled>
+    <>
+      {isLoading && <Loader />}
+      {/* {error && <div>{error}</div>} */}
+      <FormStyled onSubmit={handleSubmit} autoComplete="off">
+        <LabelStyled>
+          Username
+          <InputStyled type="text" name="name" />
+        </LabelStyled>
+        <LabelStyled>
+          Email
+          <InputStyled type="email" name="email" />
+        </LabelStyled>
+        <LabelStyled>
+          Password
+          <InputStyled type="password" name="password" />
+        </LabelStyled>
+        <ButtonStyled type="submit">Register</ButtonStyled>
+      </FormStyled>
+    </>
   );
 }
 
